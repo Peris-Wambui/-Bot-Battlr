@@ -11,6 +11,7 @@ const botTypeClasses = {
 
 function BotCard({ bot,
   addBotToArmy,
+  removeBotFromArmy,
   isInArmy = false,
  }) {
   return (
@@ -20,6 +21,7 @@ function BotCard({ bot,
         key={bot.id}
         onClick={() => {
           !isInArmy && addBotToArmy(bot);
+          isInArmy && removeBotFromArmy(bot);
         }}
       >
         <div className="image">

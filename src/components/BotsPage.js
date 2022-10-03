@@ -14,12 +14,15 @@ function BotsPage() {
 
   function addBotToArmy(bot){
     if(yourBots.includes(bot))return;
-
+    setYourBots([...yourBots,bot]);
   }
 
   return (
     <div>
-      <YourBotArmy />
+      <YourBotArmy
+      yourBots={yourBots}
+      setYourBots={setYourBots}
+      />
       <BotCollection 
       bots ={bots}
       addBotToArmy={addBotToArmy}
