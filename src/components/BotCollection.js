@@ -1,8 +1,14 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function BotCollection({bots, addBotToArmy}) {
+function BotCollection({bots, addBotToArmy,setBots, setActiveBot, removeBotFromArmy}) {
   // Your code here
+  function deleteBot(deleteBot){
+    const UpdatedBots = bots.filter((bot)=>{
+      return bot.id !==deleteBot.id
+    })
+    setBots(UpdatedBots)
+  }
 
   return (
     <div className="ui four column grid">
@@ -14,6 +20,11 @@ function BotCollection({bots, addBotToArmy}) {
             bot={bot}
             key={bot.id}
             addBotToArmy={addBotToArmy}
+            onDelete ={deleteBot}
+            setActiveBots={setActiveBot}
+            removeBotFromArmy={removeBotFromArmy}
+
+
             />
           );
         })}
