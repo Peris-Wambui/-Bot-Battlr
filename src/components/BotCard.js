@@ -12,9 +12,8 @@ const botTypeClasses = {
 function BotCard({ bot,
   addBotToArmy,
   onDelete,
-  removeBotFromArmy,
-  setActiveBots,
   isInArmy = false,
+  handleBot
  }) {
 
   function handleBotDelete(){
@@ -31,7 +30,7 @@ function BotCard({ bot,
         key={bot.id}
         onClick={() => {
           !isInArmy && addBotToArmy(bot);
-          isInArmy && removeBotFromArmy(bot);
+          isInArmy && handleBot(bot);
         }}
       >
         <div className="image">

@@ -7,7 +7,7 @@ function BotsPage() {
   //start here with your code for step one
   const [bots, setBots]=useState([]);
   const [yourBots, setYourBots]= useState([]);
-  const [activeBot, setActiveBot]= useState(null);
+  
 
   useEffect(()=>{
     fetch("http://localhost:8002/bots")
@@ -20,26 +20,24 @@ function BotsPage() {
     setYourBots([...yourBots,bot]);
   }
 
+  function removeFromBot(bot) {
+    setYourBots(yourBots.filter(bots=>bots!==bot))
+  } 
+
   return (
     <div>
       <YourBotArmy
+      bots={bots}
       yourBots={yourBots}
       setYourBots={setYourBots}
+      removeFromBot={removeFromBot}
       />
-     { activeBot?(
-     <BotSpecs 
-        bot ={activeBot}
-        setActiveBot ={setActiveBot}
-        setYourBots={setYourBots}
-     />
-     ):( 
+
      <BotCollection 
       bots ={bots}
       addBotToArmy={addBotToArmy}
       setBots={setBots}
-      setActiveBot={setActiveBot}
       />
-    )}
     </div>
   )
 }
